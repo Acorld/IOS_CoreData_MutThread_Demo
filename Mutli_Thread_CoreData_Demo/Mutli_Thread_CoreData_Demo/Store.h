@@ -14,5 +14,5 @@
 @property (nonatomic,strong,readonly) NSManagedObjectContext* saveManagedObjectContext;
 - (void)saveContext;
 - (NSManagedObjectContext*)newPrivateContext;
-
+- (void)resetData;
 @end

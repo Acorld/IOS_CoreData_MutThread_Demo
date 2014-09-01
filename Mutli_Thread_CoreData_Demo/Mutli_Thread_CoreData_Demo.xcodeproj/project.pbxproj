@@ -140,8 +140,6 @@
 			children = (
 				2EC5BF6B19B326DB00450710 /* Resources */,
 				2EC5BF6C19B3301500450710 /* Files */,
-				2EC5BF5B19B3265600450710 /* FetchedResultsTableDataSource.m */,
-				2EC5BF5C19B3265600450710 /* FetchedResultsTableDataSource.h */,
 				2EC5BF2A19B3257200450710 /* AppDelegate.h */,
 				2EC5BF2B19B3257200450710 /* AppDelegate.m */,
 				2EC5BF2D19B3257200450710 /* Main.storyboard */,
@@ -204,6 +202,8 @@
 				2EC5BF5E19B3265600450710 /* NSString+ParseCSV.h */,
 				2EC5BF6319B3265F00450710 /* ImportOperation.m */,
 				2EC5BF6419B3265F00450710 /* ImportOperation.h */,
+				2EC5BF5B19B3265600450710 /* FetchedResultsTableDataSource.m */,
+				2EC5BF5C19B3265600450710 /* FetchedResultsTableDataSource.h */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -520,6 +520,7 @@
 				2EC5BF4C19B3257200450710 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2EC5BF4D19B3257200450710 /* Build configuration list for PBXNativeTarget "Mutli_Thread_CoreData_DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +529,7 @@
 				2EC5BF4F19B3257200450710 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

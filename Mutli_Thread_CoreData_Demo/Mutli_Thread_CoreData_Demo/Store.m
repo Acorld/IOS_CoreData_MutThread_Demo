@@ -71,12 +71,42 @@
     NSError *error = nil;
     NSManagedObjectContext *managedObjectContext = self.mainManagedObjectContext;
     if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+        if ([managedObjectContext hasChanges]) {
+            if (![managedObjectContext save:&error])
+            {
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            }else
+            {
+                [_saveManagedObjectContext performBlock:^{
+                    __block NSError *inner_error = nil;
+                    if (![_saveManagedObjectContext save:&inner_error])
+                    {
+                        NSLog(@"Unresolved inner_error %@, %@", inner_error, [inner_error userInfo]);
+                    }
+                }];
+            }
         }
+    }
+}
+
+- (void)resetData
+{
+    NSEntityDescription *description = [NSEntityDescription entityForName:kDataBaseName inManagedObjectContext:self.saveManagedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setIncludesPropertyValues:NO];
+    [request setEntity:description];
+    NSError *error = nil;
+    NSArray *datas = [self.saveManagedObjectContext executeFetchRequest:request error:&error];
+    if (!error && datas && [datas count])
+    {
+        for (NSManagedObject *obj in datas)
+        {
+            [self.saveManagedObjectContext deleteObject:obj];
+        }
+        if (![self.saveManagedObjectContext save:&error])
+        {
+            NSLog(@"error:%@",error);
+        }  
     }
 }
 
